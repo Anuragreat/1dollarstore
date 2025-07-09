@@ -27,11 +27,11 @@ public class AuthController {
     public String registerUser(@ModelAttribute("user") User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        return "redirect:/login";
+        return "redirect:/login1";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/login1")
     public String login() {
-        return "login";
+        return "login1";
     }
 }

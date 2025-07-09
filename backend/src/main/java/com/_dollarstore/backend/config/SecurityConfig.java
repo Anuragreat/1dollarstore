@@ -28,16 +28,17 @@ public class SecurityConfig {
         http
             .csrf().disable()
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/register", "/css/**").permitAll()
-                .anyRequest().authenticated()
+            .requestMatchers("/", "/login1", "/register", "/css/**").permitAll()
+            .anyRequest().authenticated()
             )
+
             .formLogin(form -> form
-                .loginPage("/login")
+                .loginPage("/login1")
                 .defaultSuccessUrl("/", true)
                 .permitAll()
             )
             .logout(logout -> logout
-                .logoutSuccessUrl("/login?logout")
+                .logoutSuccessUrl("/login1?logout")
                 .permitAll()
             );
         return http.build();
